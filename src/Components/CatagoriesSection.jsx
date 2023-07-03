@@ -18,7 +18,7 @@ export default function CatagoriesSection() {
       {/* <div style={{ borderLeft: "6px solid #dc3545", height: "60px", paddingTop : "-40px" }} className='mt-1 mx-2'></div>  */}
         <div className="card bg-white mb-2 rounded-0" style={{marginLeft : "-7px"}}>
           <div className="card-body">
-            <h5 className="card-title  text-danger">CATEGORIES</h5>
+            <h5 className="card-title text-danger">CATEGORIES</h5>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function Searching() {
   return (
     <>
       <div className="bg-light sticky-top  ">
-        <div className="container py-2 d-flex align-items-center ">
+        <div className="container pt-3 d-flex align-items-center ">
 
           <Link className='text-decoration-none d-flex' to={'/'}>
             <FontAwesomeIcon icon={faBagShopping} color='#dc3545' className='fs-2 pe-1' />

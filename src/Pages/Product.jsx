@@ -36,6 +36,25 @@ export default function Product() {
     setQuantity(Quantity + 1)
   }
 
+ const productPrice = Math.floor(product.price - product.price * (product.discountPercentage / 100))
+
+  const AddToCart = () => {
+    const payload = {
+      ...product,
+      Quantity,
+      totalPrice: productPrice * Quantity,
+    };
+
+    console.log(payload);
+
+    Swal.fire({
+      title: "Added to Cart!",
+      text: "Check your Cart for Check Out",
+      icon: "success",
+      confirmButtonText: "Continue Shopping",
+    });
+  };
+
   const submitReview = () => {
     const payload = {
       ProductID: ProductID,
@@ -83,18 +102,17 @@ export default function Product() {
                   <span className='text-danger'>Brand:  <span className='text-dark'>{product.brand}</span></span>
                   <div style={{ borderLeft: "2px solid #dc3545", height: "20px" }} className='mt-1 mx-2'></div>
                   <span className='text-danger'>Category:  <span className='text-dark'>{product.category}</span></span>
-                  {/* <div style={{ borderLeft: "2px solid #dc3545", height: "20px" }} className='mt-1 mx-2'></div> */}
-
+ 
                 </div>
               </div>
 
               <div className="text-danger mt-2 ">
-                <h3>${Math.floor(product.price - product.price * (product.discountPercentage / 100))}</h3>
+                <h3>${productPrice}</h3>
               </div>
 
               <div  >
                 <span className='text-decoration-line-through me-2 text-secondary'>${product.price}</span>
-                <span className='fw-semibold'>${Math.floor(product.price - product.price * (product.discountPercentage / 100))}
+                <span className='fw-semibold'>${productPrice}
                 </span>
                 <span className='text-danger ms-2'>({product.discountPercentage}% off)</span>
               </div>
@@ -117,8 +135,8 @@ export default function Product() {
 
               <div className=' mb-5'>
               <Link to={'/cart'}> 
-                <button className='btn btn-outline-danger px-5 py-2 rounded-0'>
-                  <FontAwesomeIcon icon={faCartShopping} className='me-2'/>
+                <button className='btn btn-outline-danger px-5 py-2 rounded-0' onClick={AddToCart}>
+                  <FontAwesomeIcon icon={faCartShopping} className='me-2 '/>
                  Add to cart
                 </button>
                 </Link>

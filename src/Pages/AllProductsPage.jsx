@@ -4,75 +4,56 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-stars'
 
-
 export default function AllProductsPage() {
-
-  const [AllProducts, setAllProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
     axios.get("https://dummyjson.com/products").then(json => setAllProducts(json.data.products))
   }, [])
 
-  const percent = {
-
-  }
+  // Shuffle the array to get random products
+  const shuffledProducts = allProducts.sort(() => 0.5 - Math.random());
 
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          {
-            AllProducts.map((val, key) =>
+    <div className="container">
+      <div className="row">
+        {shuffledProducts.map((product, index) => (
+          <div className="col-md-3 my-3" key={index}>
+            <Link className='text-decoration-none' to={`/products/${product.id}`}>
+              <Card>
+                <Card.Img src={product.thumbnail} className='object-fit-cover border rounded img-fluid' style={{ height: "180px" }} />
 
-              <div className="col-md-3 my-3  " key={key} >
-                <Link className='text-decoration-none' to={`/products/${val.id}`} >
-                  <Card >
-                    <Card.Img src={val.thumbnail} className='object-fit-cover border rounded img-fluid' style={{ height: "180px" }} />
+                <span className="position-absolute translate-start badge bg-danger" style={{
+                  padding: '5px 10px',
+                  marginTop: '10px',
+                  marginLeft: '-4px',
+                  borderRadius: '4px'
+                }}>
+                  {product.category.toUpperCase()}
+                </span>
 
-                    <span className="position-absolute translate-start badge bg-danger" style={{
-                      padding: '5px 10px',
-                      marginTop: '10px',
-                      marginLeft: '-4px',
-                      borderRadius: '4px'
-                    }}>
-                      {val.category.toUpperCase()}
+                <Card.Body>
+                  <div className="brand text-center">
+                    <span>Brand:  </span>
+                    <span className="fw-semibold">{product.brand}</span>
+                  </div>
+
+                  <div className="text-center">
+                    {product.title}
+                  </div>
+
+                  <div className='text-center' >
+                    <span className='text-decoration-line-through me-2 text-secondary'>${product.price}</span>
+                    <span className='fw-semibold'>${Math.floor(product.price - product.price * (product.discountPercentage / 100))}
                     </span>
-
-
-                    <Card.Body >
-                      <div className="brand text-center">
-                        <span>Brand:  </span>
-                        <span className="fw-semibold">{val.brand}</span>
-                      </div>
-
-                      <div className="text-center">
-                        {val.title}
-                      </div>
-                      {/* <Card.Text>{val.description}</Card.Text> */}
-
-                      {/* <ReactStars
-                        count={5}
-                        size={20}
-                        edit={false}
-                        value={val.rating}
-                        color2={'#ffd700'} /> */}
-
-                      <div className='text-center' >
-                        <span className='text-decoration-line-through me-2 text-secondary'>${val.price}</span>
-                        <span className='fw-semibold'>${Math.floor(val.price - val.price * (val.discountPercentage / 100))}
-                        </span>
-                        <span className='text-danger ms-2'>({val.discountPercentage.toFixed(0)}% off)</span>
-                      </div>
-
-
-                      {/* <h5 className='text-danger'>Price: {val.price}$</h5> */}
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </div>
-            )}
-        </div>
-      </div >
-    </>
+                    <span className='text-danger ms-2'>({product.discountPercentage.toFixed(0)}% off)</span>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
