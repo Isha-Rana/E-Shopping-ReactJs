@@ -134,7 +134,7 @@ export default function Product() {
               </div>
 
               <div className=' mb-5'>
-              <Link to={'/cart'}> 
+              <Link to={''}> 
                 <button className='btn btn-outline-danger px-5 py-2 rounded-0' onClick={AddToCart}>
                   <FontAwesomeIcon icon={faCartShopping} className='me-2 '/>
                  Add to cart
