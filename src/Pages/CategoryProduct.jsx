@@ -36,16 +36,16 @@ export default function CategoryProduct() {
                   <Card.Body style={{ height: "260px" }}>
                     <Card.Title>{val.title}</Card.Title>
                     <Card.Text>{val.description}</Card.Text>
-                     
-                     <div style = {{marginTop : "-20px"}}> 
-                     <ReactStars 
-                      count={5}
-                      size={24}
-                      edit={false}
-                      value={val.rating}
-                      color2={'#ffd700'} />
-</div>
-                    
+
+                    <div style={{ marginTop: "-20px" }}>
+                      <ReactStars
+                        count={5}
+                        size={24}
+                        edit={false}
+                        value={val.rating}
+                        color2={'#ffd700'} />
+                    </div>
+
                     <h5 className='text-danger'>Price: {val.price}$</h5>
                   </Card.Body>
 
