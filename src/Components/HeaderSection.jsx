@@ -15,19 +15,19 @@ export default function HeaderSection() {
             <Carousel>
 
               <Carousel.Item>
-                <Link className='text-decoration-none' to={'http://localhost:5173/products/category/mens-watches'}>                 
+                <Link className='text-decoration-none' to={'/products/category/mens-watches'}>                 
                   <img src= {banner1} alt="First slide" className='img-fluid'/>
                 </Link>
               </Carousel.Item>
 
               <Carousel.Item>
-                <Link className='text-decoration-none' to={'http://localhost:5173/products/category/mens-shoes'}>                 
+                <Link className='text-decoration-none' to={'/products/category/mens-shoes'}>                 
                   <img src={banner2} alt="second slide" className='img-fluid'/>
                 </Link>
               </Carousel.Item>
 
               <Carousel.Item>
-                <Link className='text-decoration-none' to={'http://localhost:5173/products/category/mens-shirts'}>                 
+                <Link className='text-decoration-none' to={'/products/category/mens-shirts'}>                 
                   <img src={banner3} alt="third slide" className='img-fluid'/>
                 </Link>
               </Carousel.Item>
