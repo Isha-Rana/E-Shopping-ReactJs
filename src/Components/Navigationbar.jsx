@@ -3,12 +3,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBorderAll } from '@fortawesome/free-solid-svg-icons';
+// import { GlobalContext } from '../main';
 
 
 export default function Navigationbar() {
@@ -17,6 +18,8 @@ export default function Navigationbar() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [categories, setcategories] = useState([]);
+
+  // const {contextDate} = useContext(GlobalContext)
 
   useEffect(() => {
     axios.get('https://dummyjson.com/products/categories').then(json => setcategories(json.data))
@@ -64,6 +67,7 @@ export default function Navigationbar() {
               <Link className='nav-link' to="/products">Products</Link>
               <Link className='nav-link' to="/login">Login</Link>
               <Link className='ms-4 btn btn-dark' to="/signup">Signup</Link>
+              {/* <Link className='ms-4 btn btn-outline-dark' to="/">{contextDate.username}</Link> */}
             </Nav>
 
           </Navbar.Collapse>

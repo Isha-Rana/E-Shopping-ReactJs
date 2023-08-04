@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
+import CartContextProvider from './Context/AddToCart/context.jsx';
 
+// export const GlobalContext = createContext("Initial Value")
+// const contextDate = {
+//   username : "Quratulain Anuu"
+// }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-   <BrowserRouter> <App /> </BrowserRouter>
-  </React.StrictMode>,
+
+  // <GlobalContext.Provider value= {{contextDate}}>
+  <CartContextProvider>
+    <React.StrictMode>
+      <BrowserRouter> <App /> </BrowserRouter>
+    </React.StrictMode>,
+  </CartContextProvider>
+  // </GlobalContext.Provider>
 )

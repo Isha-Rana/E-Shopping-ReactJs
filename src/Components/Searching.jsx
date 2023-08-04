@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link, json } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Badge from 'react-bootstrap/Badge';
+import axios from 'axios';
+import Cart from './Cart';
 
 export default function Searching() {
+  const [search, setsearch] = useState("")
+
+  const Handlesearching = () => {
+    axios.get(`https://dummyjson.com/products/search?q=${search}`).then(json => console.log(json.data.products))
+  }
+
   return (
     <>
       <div className="bg-light sticky-top  ">
@@ -23,24 +30,19 @@ export default function Searching() {
                 aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm"
                 placeholder='Search your preferred items here'
+                value={search}
+                onChange={(e) => setsearch(e.target.value)}
+
               />
               <InputGroup.Text>
-                <Link to={'/'}>
+                <button className='bg-light' style={{ border: 'none' }} onClick={Handlesearching}>
                   <FontAwesomeIcon icon={faMagnifyingGlass} color='#dc3545' className='fs-3' />
-                </Link>
+                </button>
               </InputGroup.Text>
             </InputGroup>
           </div>
 
-          <Link to={'/'} className="position-relative">
-          <FontAwesomeIcon icon={faCartShopping} color='black' className='fs-3' />
-            <span className="position-absolute translate-middle badge rounded-pill bg-danger">
-              0
-              <span className="visually-hidden">unread messages</span>
-            </span>
-          </Link>
-
-
+          <Cart/>
 
         </div>
       </div>

@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 
 
 
-
 export default function Product() {
 
   const { ProductID } = useParams()
@@ -18,6 +17,7 @@ export default function Product() {
   const [review, setreview] = useState("")
   const [rating, setrating] = useState(0)
   const [Quantity, setQuantity] = useState(0)
+  
 
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${ProductID}`).then(json => setproduct(json.data))

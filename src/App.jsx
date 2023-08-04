@@ -11,19 +11,20 @@ import Product from './Pages/Product'
 import AllProductsPage from './Pages/AllProductsPage'
 import Searching from './Components/Searching'
 import SingleCategorySection from './Components/SingleCategorySection'
-import Cart from './Pages/Cart'
+import Cart from './Components/Cart'
   
 
 function App() {
-  const [user,setuser] = useState(true)
+  const [user,setuser] = useState(false)
 
   return (
     <>
     <Searching/>
     <Navigationbar/>
     
-    {user ? 
-    (<Routes>
+    {/* {user ?  */}
+    {/* ( */}
+      <Routes>
       <Route path='/' element = {<Home/>}/>
       <Route path='/cart' element = {<Cart/>}/>
       <Route path='/products/category/:categoryName' element = {<CategoryProduct/>}/>
@@ -31,17 +32,19 @@ function App() {
       <Route path="/categories/" component={<SingleCategorySection/>} />
       <Route path='/products/:ProductID' element = {<Product/>}/>
       <Route path='*' element = {<Page404/>}/>
+      <Route path='/login' element = {<Login/>}/>
+      <Route path='/signup' element = {<SignUp/>}/>
     </Routes>
-    ) 
-    : (
-    <Routes>
+    {/* ) 
+    : ( */}
+    {/* <Routes>
       <Route path='/login' element = {<Login/>}/>
       <Route path='/signup' element = {<SignUp/>}/>
       <Route path='/' element = {<Home/>}/>
       <Route path='*' element = {<Navigate to = "/login" replace={true}/>}/>
-    </Routes>
-    )
-    }
+    </Routes> */}
+    {/* ) */}
+    {/* } */}
     <Footer/>
     </>
   )
