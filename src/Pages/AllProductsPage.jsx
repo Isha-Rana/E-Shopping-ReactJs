@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import ReactStars from 'react-stars'
 import Swal from 'sweetalert2';
 import { Cartcontext } from '../Context/AddToCart/context';
-import Loader from '../Components/Loader/loader';
+import Loader from '../Components/loader';
 
 export default function AllProductsPage() {
   const [allProducts, setAllProducts] = useState([]);
