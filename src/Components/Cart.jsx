@@ -34,8 +34,7 @@ export default function Cart() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           {
-            state.cart.map((val, key) => <Cartitems key={key} data = {val}/>          
-            )
+            state.cart.map((val, key) => <Cartitems key={key} data = {val}/>)
           }
         </Offcanvas.Body>
       </Offcanvas>

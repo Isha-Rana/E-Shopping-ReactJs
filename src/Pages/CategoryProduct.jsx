@@ -7,15 +7,30 @@ import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from 'react';
+import { Cartcontext } from '../Context/AddToCart/context';
 
 export default function CategoryProduct() {
 
   const { categoryName } = useParams()
   const [CategoryProduct, setCategoryProduct] = useState([]);
 
+  const {state, dispatch} = useContext(Cartcontext)
+
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/category/${categoryName}`).then(json => setCategoryProduct(json.data.products))
   }, [categoryName])
+
+
+  const AddToCart = (item) => {
+
+    dispatch(
+      {
+        type : "ADD_TO_CART",
+        payload : item
+      }
+    ) 
+  }
 
   return (
     <>
@@ -28,55 +43,45 @@ export default function CategoryProduct() {
         <div className="row">
           {CategoryProduct.map((val, key) =>
 
-
             <div className="col-md-3 my-3" key={key} >
-              <Link className='text-decoration-none' to={`/products/${val.id}`}>
-                <Card style={{ height: "500px" }}>
-                  <Card.Img varient="top" src={val.thumbnail} className='object-fit-fit border rounded img-fluid' style={{ height: "250px" }} />
-                  <Card.Body style={{ height: "260px" }}>
-                    <Card.Title>{val.title}</Card.Title>
-                    <Card.Text>{val.description}</Card.Text>
 
-                    <div style={{ marginTop: "-20px" }}>
-                      <ReactStars
-                        count={5}
-                        size={24}
-                        edit={false}
-                        value={val.rating}
-                        color2={'#ffd700'} />
-                    </div>
-
-                    <h5 className='text-danger'>Price: {val.price}$</h5>
-                  </Card.Body>
-
-                  <span className="position-absolute translate-start badge bg-danger" style={{
-                    padding: '5px 10px',
-                    marginTop: '10px',
-                    marginLeft: '-4px',
-                    borderRadius: '4px'
-                  }}>
-                    {val.brand.toUpperCase()}
-                  </span>
-
-                  {/* <Card.Body>
+              <Card style={{ height: "370px" }}>
+                <Card.Img varient="top" src={val.thumbnail} className='object-fit-fit border rounded img-fluid' style={{ height: "200px" }} />
+                <Card.Body>
+                  <Link className='text-decoration-none text-dark' to={`/products/${val.id}`}>
                     <div className="brand text-center">
-                      
                     </div>
-
                     <div className="text-center fw-bold fs-5">
-                      {val.title}
+                      {val.title.length > 15 ? val.title.slice(0, 15) + '...' : val.title}
                     </div>
-                    {val.description}
+                    {val.description.length > 20 ? val.description.slice(0, 20) + '...' : val.description}
                     <div className='text-center' >
                       <span className='text-decoration-line-through me-2 text-secondary'>${val.price}</span>
                       <span className='fw-semibold'>${Math.floor(val.price - val.price * (val.discountPercentage / 100))}
                       </span>
                       <span className='text-danger ms-2'>({val.discountPercentage.toFixed(0)}% off)</span>
                     </div>
-                  </Card.Body> */}
-                </Card>
-              </Link>
+                  </Link>
+
+                  <div className="d-grid">
+                    <button className='btn btn-outline-danger px-5 py-2 mt-3 ' onClick={() => AddToCart(val)}>Add to Cart</button>
+                  </div>
+                </Card.Body>
+
+                <span className="position-absolute translate-start badge bg-danger" style={{
+                  padding: '5px 10px',
+                  marginTop: '10px',
+                  marginLeft: '-4px',
+                  borderRadius: '4px'
+                }}>
+                  {val.brand.toUpperCase()}
+                </span>
+
+
+              </Card>
+
             </div>
+
           )}
         </div>
       </div>

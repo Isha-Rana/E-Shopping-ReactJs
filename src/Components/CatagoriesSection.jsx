@@ -8,7 +8,7 @@ export default function CatagoriesSection() {
   const [categories, setcategories] = useState([]);
 
   useEffect(() => {
-    axios.get('https://dummyjson.com/products/categories').then(json => setcategories(json.data))
+    axios.get('https://weak-pear-buffalo-kilt.cyclic.cloud/api/get-all-category').then(json => setcategories(json.data.Category))
   }, [])
 
   return (
@@ -25,13 +25,13 @@ export default function CatagoriesSection() {
 
         <div className="row">
           {
-            categories.map((val, key) =>
+            categories?.map((val, key) =>
 
               <div className="col-md-3 my-1" key={key}>
-                <Link className='text-decoration-none' to={`/products/category/${val}`}>
+                <Link className='text-decoration-none'>
                   <Card>
                     <Card.Body>
-                      <Card.Title className='fs-6'>{val.toUpperCase().replace('-', ' ')}</Card.Title>
+                      <Card.Title className='fs-6'>{val.CategoryName.toUpperCase().replace('-', ' ')}</Card.Title>
                     </Card.Body>
                   </Card>
                 </Link>

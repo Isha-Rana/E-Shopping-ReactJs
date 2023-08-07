@@ -6,13 +6,10 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import axios from 'axios';
 import Cart from './Cart';
+import SearchingModal from './SearchingModal';
 
 export default function Searching() {
-  const [search, setsearch] = useState("")
-
-  const Handlesearching = () => {
-    axios.get(`https://dummyjson.com/products/search?q=${search}`).then(json => console.log(json.data.products))
-  }
+ 
 
   return (
     <>
@@ -24,24 +21,8 @@ export default function Searching() {
             <h2 className='text-danger '>Bonik</h2>
           </Link>
 
-          <div className="container " >
-            <InputGroup size="default" >
-              <Form.Control
-                aria-label="Large"
-                aria-describedby="inputGroup-sizing-sm"
-                placeholder='Search your preferred items here'
-                value={search}
-                onChange={(e) => setsearch(e.target.value)}
-
-              />
-              <InputGroup.Text>
-                <button className='bg-light' style={{ border: 'none' }} onClick={Handlesearching}>
-                  <FontAwesomeIcon icon={faMagnifyingGlass} color='#dc3545' className='fs-3' />
-                </button>
-              </InputGroup.Text>
-            </InputGroup>
-          </div>
-
+ 
+          <SearchingModal/>
           <Cart/>
 
         </div>
