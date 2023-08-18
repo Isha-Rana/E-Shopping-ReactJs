@@ -17,7 +17,7 @@ export default function CommentsSection() {
 
                 <div className="text-center my-5">
                     <h2>Reviews</h2>
-                    <p className="text-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam inventore ea ut eum nulla, suscipit labore doloremque. Qui consequuntur facere cupiditate, quis harum porro veniam et a, quidem, sed at!</p>
+                    <p className="text-secondary">Listen few reviews from our customers</p>
                 </div>
 
                 
