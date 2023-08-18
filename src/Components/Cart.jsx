@@ -18,8 +18,8 @@ export default function Cart() {
     <>
       <Button onClick={handleShow} className="btn-light">
         <div className='position-relative'>
-          <FontAwesomeIcon icon={faCartShopping} color='black' className='fs-2' />
-          <span className="position-absolute translate-middle badge rounded-pill bg-danger">
+          <FontAwesomeIcon icon={faCartShopping} color='#1765ee' className='fs-2' />
+          <span className="position-absolute translate-middle badge rounded-pill bg-warning">
 
             {state.cart.length}
 

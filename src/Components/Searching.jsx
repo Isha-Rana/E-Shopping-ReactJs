@@ -17,8 +17,8 @@ export default function Searching() {
         <div className="container pt-3 d-flex align-items-center ">
 
           <Link className='text-decoration-none d-flex' to={'/'}>
-            <FontAwesomeIcon icon={faBagShopping} color='#dc3545' className='fs-2 pe-1' />
-            <h2 className='text-danger '>Bonik</h2>
+          <FontAwesomeIcon icon={faBagShopping} color='#1843f2' className='fs-2 pe-1' />
+            <h2 className='text-danger text-blue '></h2>
           </Link>
 
  

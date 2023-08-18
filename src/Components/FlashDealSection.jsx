@@ -27,8 +27,8 @@ export default function FlashDealSection() {
     <div className="container mt-4">
       <div className="card bg-white mb-2 rounded-0" style={{ marginLeft: "-7px" }}>
         <div className="card-body d-flex">
-        <FontAwesomeIcon icon={faBolt} color='#dc3545' className='fs-4 me-2' />
-          <h5 className="card-title text-danger fw-semibold ">Flash Deals</h5>
+        <FontAwesomeIcon icon={faBolt} color='#ece50e' className='fs-4 me-2' />
+          <h5 className="card-title text-black fw-semibold ">Best Seller's</h5>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export default function FlashDealSection() {
                 <Card>
                   <Card.Img src={product.thumbnail} className='object-fit-cover border rounded img-fluid' style={{ height: "180px" }} />
 
-                  <span className="position-absolute translate-start badge bg-danger" style={{
+                  <span className="position-absolute translate-start badge bg-warning" style={{
                     padding: '5px 10px',
                     marginTop: '10px',
                     marginLeft: '-4px',

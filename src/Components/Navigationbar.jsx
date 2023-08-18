@@ -33,7 +33,8 @@ export default function Navigationbar() {
           <Navbar.Brand >
             <div>
               <Button variant="light" onClick={handleShow} className="">
-                <FontAwesomeIcon icon={faBorderAll} className='me-1' />
+                <FontAwesomeIcon icon={faBorderAll} color='#eaed0c' className='me-1' />
+               
                 Categories
               </Button>
               <Offcanvas show={show} onHide={handleClose}>
@@ -66,7 +67,7 @@ export default function Navigationbar() {
               <Link className='nav-link' to="/">Home</Link>
               <Link className='nav-link' to="/products">Products</Link>
               <Link className='nav-link' to="/login">Login</Link>
-              <Link className='ms-4 btn btn-dark' to="/signup">Signup</Link>
+              <Link className='ms-4 btn btn-warning' to="/signup">Signup</Link>
               {/* <Link className='ms-4 btn btn-outline-dark' to="/">{contextDate.username}</Link> */}
             </Nav>
 

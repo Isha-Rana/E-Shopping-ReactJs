@@ -54,7 +54,7 @@ export default function SearchingModal() {
                     />
                     <InputGroup.Text>
                         <button className='bg-light' style={{ border: 'none' }} onClick={Handlesearching}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} color='#dc3545' className='fs-3' />
+                            <FontAwesomeIcon icon={faMagnifyingGlass} color='#234fe1' className='fs-3' />
                         </button>
                     </InputGroup.Text>
                 </InputGroup>
